@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  max-width: 600px;
+  margin: auto;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+li {
+  transition: all 0.3s ease-in-out;
+}
+
+li:hover {
+  background-color: #f1f1f1;
+}
