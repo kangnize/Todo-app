@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FaPlus, FaTrash, FaEdit } from 'react-icons/fa';
+import { FaTrash, FaEdit } from 'react-icons/fa';
 import Tasks from './Tasks';
+import AddTask from './AddTask';
 import './App.css';
 
 function App() {
@@ -96,18 +97,13 @@ function App() {
       <div className="card shadow">
         <div className="card-body">
           <h2 className="text-center mb-4">📝 Naiza Task Manager</h2>
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter a task..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <button className="btn btn-primary" onClick={handleAddTask}>
-              {editIndex !== null ? <FaEdit /> : <FaPlus />}
-            </button>
-          </div>
+
+          <AddTask
+            input={input}
+            setInput={setInput}
+            handleAddTask={handleAddTask}
+            editIndex={editIndex}
+          />
 
 					<Tasks tasks={tasks} statusLabel="todo" displayName="Tasks" />
 					<Tasks tasks={tasks} statusLabel="doing" displayName="Doing" />
