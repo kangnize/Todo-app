@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaPlus, FaTrash, FaEdit } from 'react-icons/fa';
+import Tasks from './Tasks';
 import './App.css';
 
 function App() {
@@ -108,9 +109,9 @@ function App() {
             </button>
           </div>
 
-          {renderTasks('todo', 'Tasks')}
-          {renderTasks('doing', 'Doing')}
-          {renderTasks('done', 'Done')}
+					<Tasks tasks={tasks} statusLabel="todo" displayName="Tasks" />
+					<Tasks tasks={tasks} statusLabel="doing" displayName="Doing" />
+					<Tasks tasks={tasks} statusLabel="done" displayName="Done" />
         </div>
       </div>
     </div>
