@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaTrash, FaEdit } from 'react-icons/fa';
-import Tasks from './Tasks';
-import AddTask from './AddTask';
+import Tasks from './components/Tasks';
+import AddTask from './components/AddTask';
 import './App.css';
 
 function App() {
