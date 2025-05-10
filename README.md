@@ -78,4 +78,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 4. Make changes
 5. Check changes -> `git status`
 6. Add changes -> `git add .`
+7. Commit changes -> `git commit -m 'Message #issue no'`
+8. Push changes to make a new pull request -> `git push origin add-task-component`
+9. Go to github and create pull request + add reviewers
+----
+### Making updates - comments in pull requests
+10. Pull remote branch -> `git pull origin add-task-component`
+11. Add new updates -> `git add .`
+12. Commit new updates to the same commit -> `git commit --amend --no-edit`
+13. Push the new changes -> `git push origin add-task-component`
    

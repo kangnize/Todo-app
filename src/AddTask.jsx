@@ -16,7 +16,7 @@ const AddTask = (props) => {
           onChange={(e) => setInput(e.target.value)}
         />
         <button className="btn btn-primary" onClick={handleAddTask}>
-          {editIndex !== null ? <FaEdit /> : <FaPlus />}
+          {!!editIndex ? <FaEdit /> : <FaPlus />}
         </button>
       </div>
     </div>
