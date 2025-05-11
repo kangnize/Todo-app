@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaPlus, FaEdit } from 'react-icons/fa';
-import './App.css';
+import '../App.css';
 
 const AddTask = (props) => {
   const { input, setInput, handleAddTask, editIndex } = props;
