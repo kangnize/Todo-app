@@ -8,15 +8,18 @@ function App() {
   const [input, setInput] = useState('');
   const [editIndex, setEditIndex] = useState(null);
 
+  // Load tasks from localStorage on mount
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('tasks'));
     if (stored) setTasks(stored);
   }, []);
 
+  // Save tasks to localStorage on update
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
+  // Add or update task
   const handleAddTask = () => {
     if (!input.trim()) return;
 
@@ -28,20 +31,24 @@ function App() {
     } else {
       setTasks([...tasks, { text: input, status: 'todo' }]);
     }
+
     setInput('');
   };
 
+  // Delete task
   const handleDelete = (index) => {
     const updated = tasks.filter((_, i) => i !== index);
     setTasks(updated);
-    if (editIndex === index) setEditIndex(null); // Reset edit state if deleting edited task
+    if (editIndex === index) setEditIndex(null);
   };
 
+  // Edit task (load into input)
   const handleEdit = (index) => {
     setInput(tasks[index].text);
     setEditIndex(index);
   };
 
+  // Change task status
   const changeStatus = (index, newStatus) => {
     const updated = [...tasks];
     updated[index].status = newStatus;
@@ -54,6 +61,7 @@ function App() {
         <div className="card-body">
           <h2 className="text-center mb-4">📝 Naiza Task Manager</h2>
 
+          {/* Add/Edit Task Form */}
           <AddTask
             input={input}
             setInput={setInput}
@@ -61,9 +69,31 @@ function App() {
             editIndex={editIndex}
           />
 
-					<Tasks tasks={tasks} statusLabel="todo" displayName="Tasks" />
-					<Tasks tasks={tasks} statusLabel="doing" displayName="Doing" />
-					<Tasks tasks={tasks} statusLabel="done" displayName="Done" />
+          {/* Task Columns */}
+          <Tasks
+            tasks={tasks}
+            statusLabel="todo"
+            displayName="Tasks"
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            changeStatus={changeStatus}
+          />
+          <Tasks
+            tasks={tasks}
+            statusLabel="doing"
+            displayName="Doing"
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            changeStatus={changeStatus}
+          />
+          <Tasks
+            tasks={tasks}
+            statusLabel="done"
+            displayName="Done"
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            changeStatus={changeStatus}
+          />
         </div>
       </div>
     </div>
