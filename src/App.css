@@ -58,3 +58,9 @@ li {
 li:hover {
   background-color: #f1f1f1;
 }
+
+.completed-task {
+  text-decoration: line-through;
+  color: #6c757d;
+  opacity: 0.7;
+}
