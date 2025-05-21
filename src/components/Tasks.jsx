@@ -1,12 +1,19 @@
 // src/components/Tasks.js
 
-import React from 'react';
-import EditButton from './EditButton';
-import DeleteButton from './DeleteButton';
-import StatusButton from './StatusButton';
-import PropTypes from 'prop-types';
+import React from "react";
+import EditButton from "./EditButton";
+import DeleteButton from "./DeleteButton";
+import StatusButton from "./StatusButton";
+import PropTypes from "prop-types";
 
-const Tasks = ({ tasks, statusLabel, displayName, handleEdit, handleDelete, changeStatus }) => {
+const Tasks = ({
+  tasks,
+  statusLabel,
+  displayName,
+  handleEdit,
+  handleDelete,
+  changeStatus,
+}) => {
   return (
     <div className="mt-4">
       <h4>{displayName}</h4>
@@ -20,11 +27,11 @@ const Tasks = ({ tasks, statusLabel, displayName, handleEdit, handleDelete, chan
               className="list-group-item d-flex justify-content-between align-items-center"
             >
               <span
-                className={task.status === 'done' ? 'completed-task' : ''}
+                className={task.status === "done" ? "completed-task" : ""}
                 onClick={() =>
-                  changeStatus(index, task.status === 'done' ? 'todo' : 'done')
+                  changeStatus(index, task.status === "done" ? "todo" : "done")
                 }
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
               >
                 {task.text}
               </span>
