@@ -3,6 +3,8 @@ import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 import "./App.css";
 import { getTaskCountByStatus } from "./utils";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -13,6 +15,12 @@ function App() {
   const totalTodo = getTaskCountByStatus(tasks, "todo");
   const totalDoing = getTaskCountByStatus(tasks, "doing");
   const totalDone = getTaskCountByStatus(tasks, "done");
+
+  const toggleFavourite = (index) => {
+    const updated = [...tasks];
+    updated[index].favourite = !updated[index].favourite;
+    setTasks(updated);
+  };
 
   const handleClearCompleted = () => {
     const updated = tasks.filter((task) => task.status !== "done");
@@ -37,7 +45,7 @@ function App() {
       setTasks(updated);
       setEditIndex(null);
     } else {
-      setTasks([...tasks, { text: input, status: "todo" }]);
+      setTasks([...tasks, { text: input, status: "todo", favourite: false }]);
     }
 
     setInput("");
@@ -142,6 +150,8 @@ function App() {
             handleEdit={handleEdit}
             handleDelete={handleDelete}
             changeStatus={changeStatus}
+            toggleFavourite={toggleFavourite}
+
           />
           <Tasks
             tasks={filteredTasks}
@@ -150,6 +160,8 @@ function App() {
             handleEdit={handleEdit}
             handleDelete={handleDelete}
             changeStatus={changeStatus}
+            toggleFavourite={toggleFavourite}
+
           />
           <Tasks
             tasks={filteredTasks}
@@ -158,6 +170,8 @@ function App() {
             handleEdit={handleEdit}
             handleDelete={handleDelete}
             changeStatus={changeStatus}
+            toggleFavourite={toggleFavourite}
+
           />
         </div>
       </div>

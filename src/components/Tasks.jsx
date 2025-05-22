@@ -13,6 +13,7 @@ const Tasks = ({
   handleEdit,
   handleDelete,
   changeStatus,
+  toggleFavourite, // ✅ Accept it here
 }) => {
   return (
     <div className="mt-4">
@@ -44,6 +45,19 @@ const Tasks = ({
                   onChange={(newStatus) => changeStatus(index, newStatus)}
                 />
               </div>
+
+              <button
+                className="btn btn-sm"
+                onClick={() => toggleFavourite(index)}
+                title={task.favourite ? "Unfavourite" : "Favourite"}
+              >
+                <i
+                  className={
+                    task.favourite ? "fas fa-star text-warning" : "far fa-star"
+                  }
+                  style={{ fontSize: "1.2rem" }}
+                ></i>
+              </button>
             </li>
           );
         })}
@@ -59,6 +73,7 @@ Tasks.propTypes = {
   handleEdit: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   changeStatus: PropTypes.func.isRequired,
+  toggleFavourite: PropTypes.func.isRequired, // ✅ Add to PropTypes
 };
 
 export default Tasks;
