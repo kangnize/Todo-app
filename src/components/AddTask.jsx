@@ -15,13 +15,11 @@ const AddTask = (props) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button onClick={handleAddTask}>
+        <button className="btn-add-task" onClick={handleAddTask}>
           {editIndex !== null ? "Update Task" : "Add Task"}
         </button>
       </div>
-      
     </div>
-    
   );
 };
 

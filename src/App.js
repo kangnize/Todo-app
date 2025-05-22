@@ -70,16 +70,16 @@ function App() {
   };
 
   const filteredTasks = tasks.filter((task) => {
-  // Filter by status
-  if (filter === "completed" && task.status !== "done") return false;
-  if (filter === "incomplete" && task.status === "done") return false;
+    // Filter by status
+    if (filter === "completed" && task.status !== "done") return false;
+    if (filter === "incomplete" && task.status === "done") return false;
 
-  // Filter by search term (case insensitive)
-  if (!task.text.toLowerCase().includes(searchTerm.toLowerCase())) return false;
+    // Filter by search term (case insensitive)
+    if (!task.text.toLowerCase().includes(searchTerm.toLowerCase()))
+      return false;
 
-  return true;
-});
-
+    return true;
+  });
 
   return (
     <div className="container mt-5">

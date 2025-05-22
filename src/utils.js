@@ -8,5 +8,5 @@
  */
 export const getTaskCountByStatus = (tasks, status) => {
   if (status === "all") return tasks.length;
-  return tasks.filter(task => task.status === status).length;
+  return tasks.filter((task) => task.status === status).length;
 };
