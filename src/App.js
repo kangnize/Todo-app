@@ -3,8 +3,7 @@ import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 import "./App.css";
 import { getTaskCountByStatus } from "./utils";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -26,6 +25,8 @@ function App() {
     const updated = tasks.filter((task) => task.status !== "done");
     setTasks(updated);
   };
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("tasks"));
@@ -69,10 +70,16 @@ function App() {
   };
 
   const filteredTasks = tasks.filter((task) => {
-    if (filter === "completed") return task.status === "done";
-    if (filter === "incomplete") return task.status !== "done";
-    return true; // 'all'
-  });
+  // Filter by status
+  if (filter === "completed" && task.status !== "done") return false;
+  if (filter === "incomplete" && task.status === "done") return false;
+
+  // Filter by search term (case insensitive)
+  if (!task.text.toLowerCase().includes(searchTerm.toLowerCase())) return false;
+
+  return true;
+});
+
 
   return (
     <div className="container mt-5">
@@ -142,6 +149,17 @@ function App() {
               Clear Completed Tasks
             </button>
           </div>
+          <div className="mb-3 text-center">
+            <input
+              type="text"
+              placeholder="Search tasks..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="form-control"
+              style={{ maxWidth: "500px", margin: "0 auto" }}
+            />
+          </div>
+
           {/* Task Columns */}
           <Tasks
             tasks={filteredTasks}
@@ -151,7 +169,6 @@ function App() {
             handleDelete={handleDelete}
             changeStatus={changeStatus}
             toggleFavourite={toggleFavourite}
-
           />
           <Tasks
             tasks={filteredTasks}
@@ -161,7 +178,6 @@ function App() {
             handleDelete={handleDelete}
             changeStatus={changeStatus}
             toggleFavourite={toggleFavourite}
-
           />
           <Tasks
             tasks={filteredTasks}
@@ -171,7 +187,6 @@ function App() {
             handleDelete={handleDelete}
             changeStatus={changeStatus}
             toggleFavourite={toggleFavourite}
-
           />
         </div>
       </div>
