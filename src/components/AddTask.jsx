@@ -1,6 +1,6 @@
-import React from 'react';
-import { FaPlus, FaEdit } from 'react-icons/fa';
-import '../App.css';
+import React from "react";
+import { FaPlus, FaEdit } from "react-icons/fa";
+import "../App.css";
 
 const AddTask = (props) => {
   const { input, setInput, handleAddTask, editIndex } = props;
@@ -15,12 +15,12 @@ const AddTask = (props) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button className="btn btn-primary" onClick={handleAddTask}>
-          {!!editIndex ? <FaEdit /> : <FaPlus />}
+        <button className="btn-add-task" onClick={handleAddTask}>
+          {editIndex !== null ? "Update Task" : "Add Task"}
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default AddTask;

@@ -1,10 +1,20 @@
+/* Center the entire app */
 .App {
   text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Logo styling with smooth animation */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,21 +23,31 @@
   }
 }
 
+/* Header with dark background and white text */
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   color: white;
+  margin-bottom: 20px;
 }
 
+/* Links with brand color */
 .App-link {
   color: #61dafb;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
+.App-link:hover {
+  color: #21a1f1;
+}
+
+/* Keyframes for spinning logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -37,24 +57,133 @@
   }
 }
 
-body {
-  background-color: #f8f9fa;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
+/* Card container styling */
 .card {
   max-width: 600px;
-  margin: auto;
+  width: 100%;
+  margin: 10px auto 30px auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
+/* Input placeholders styling */
 input::placeholder {
-  color: #ccc;
+  color: #aaa;
+  font-style: italic;
 }
 
+/* Task list items */
 li {
-  transition: all 0.3s ease-in-out;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
 }
 
 li:hover {
-  background-color: #f1f1f1;
+  background-color: #e9f0fb;
+}
+
+/* Completed tasks styling */
+.completed-task {
+  text-decoration: line-through;
+  color: #6c757d;
+  opacity: 0.7;
+}
+
+/* Favourite star icon */
+.fa-star.text-warning {
+  color: #ffc107;
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.fa-star.text-warning:hover {
+  transform: scale(1.2);
+}
+
+/* Buttons styling (edit, delete, status) */
+.btn {
+  border-radius: 6px;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  filter: brightness(0.85);
+}
+
+/* Search input box */
+input[type="text"] {
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px auto;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #61dafb;
+  box-shadow: 0 0 5px rgba(97, 218, 251, 0.5);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .card {
+    margin: 10px 15px 30px 15px;
+    padding: 15px;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-group {
+    margin-top: 10px;
+  }
+}
+
+/* Override Bootstrap's input-group button style for Add Task */
+.input-group .btn-add-task {
+  background: linear-gradient(45deg, #61dafb, #21a1f1);
+  border: none;
+  color: #121212;
+  font-weight: 700;
+  padding: 0 1.5rem;
+  border-radius: 0 0.375rem 0.375rem 0; /* Rounded only on right side */
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(33, 161, 241, 0.6);
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  border-left: none; /* remove border between input and button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.input-group .btn-add-task:hover {
+  background: linear-gradient(45deg, #21a1f1, #61dafb);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(33, 161, 241, 0.9);
+}
+
+.input-group .btn-add-task:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 10px rgba(33, 161, 241, 0.7);
 }
